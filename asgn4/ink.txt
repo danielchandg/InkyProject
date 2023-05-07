@@ -1,0 +1,449 @@
+VAR left = false
+VAR a = 0
+VAR b = 0
+VAR rewatches_matrix = false
+VAR spoon = false
+VAR adjective = "dumb"
+VAR k = false
+VAR Multivac = false
+VAR mad = false
+VAR pooped = false
+VAR c = 0
+VAR contempt = 0
+VAR d = 0
+VAR e = 0
+VAR f = ""
+VAR g = ""
+VAR h = ""
+VAR i = 0
+VAR j = ""
+
+-> main
+
+=== main ===
+I'm Daniel Chang and this is my Inky project!
+So I kind of ran out of time to do this project, but I hope you enjoy it nonetheless!
+* [Play game]
+    Hmm. What should Bob do?
+    -> tree1
+
+=== tree1 ===
+{k: What else should Bob do?}
+~ k = true
+    * {left} [Pick up the spoon]
+        ~ spoon = true
+        Bob picks up the spoon. {a>2: He thinks he is Neo or something.}
+        -> tree1
+    * [Look left]
+        ~ left = true
+        He sees a spoon.
+        -> tree1
+    * [Look right]
+        He sees something so beautiful, so otherwordly, that he can't find the words to describe it. In fact, I think it would take more than 300 words to describe it.
+        -> tree1
+    * [Touch his toes]
+        ~ adjective = "flexible"
+        My, you are flexible Bob!
+        -> tree1
+    * {a == 0} [Ponder]
+        ~ a = 1
+        "How can the net amount of entropy of the universe be massively decreased?" Bob wonders.
+        [Error 501. Insufficient Data For Meaningful Answer.]
+        Bob is a performance-driven man. He can't think about such things with homework due tomorrow!
+        -> tree1
+    * {a == 1} [Ponder]
+        ~ a = 2
+        ~ rewatches_matrix = true
+        "Are we living in a simulation?" Bob wonders.
+        [Error 501. Insufficient Data For Meaningful Answer.]
+        Bob decides to rewatch The Matrix tonight.
+            ** {spoon} [There is spoon.]
+                -- Bob holds the spoon a little tighter.
+            ** {spoon} [There is no spoon.]
+                -- Then what the heck is Bob holding?
+        -> tree1
+    * {a == 2} [Ponder]
+        ~ a = 3
+        "Do I have free will?" Bob wonders. "Or are my actions determined by external factors?"
+        [Error 501. Insufficient Data For Meaningful Answer.]
+        Bob cannot decide if he has free will or not.
+        -> tree1
+    * {a == 3} [Ponder]
+        ~ Multivac = true
+        "What came first, the chicken or the egg?" Bob wonders.
+        [Response 201. From a biological standpoint, the egg came first. The first chicken egg must have been laid by a bird from a different bird species with a genetic mutation.]
+        Bob thanks Multivac for the response.
+        -> tree1
+    + [Go to work]
+        Bob goes to work even though today is Saturday. I think he forgot or something.
+        As soon as Bob arrives, his boss (Joe) is in his face! Yelling at him, going on and on about how Bob is such a terrible employee or something. Oh no!
+        -> tree2
+-> DONE
+
+=== tree2 ===
+What does Bob do?
+    + {b<5} [Breathe]
+        ~ b = b + 1
+        {b==1: Bob takes a deep breath.|Bob takes another deep breath.}
+        -> tree2
+    * {b==5} [Breathe]
+        ~ mad = true
+        "STOP YOUR LOUD, UNNECESSARY F*CKING BREATHING!!!"
+        "Sorry, Joe", Bob says meekly.
+        -> tree2
+    * {contempt >= 3 && adjective=="flexible"} [Apologize]
+        Bob gives an incredibly sincere and moving apology. Joe, stunned by Bob's *flexibility*, accepts it. Yay!
+        Bob heads to his desk.
+        ** [Phew]
+            -> tree3
+    * {adjective!="flexible"} [Apologize]
+        ~ contempt = contempt + 1
+        Bob gives an incredibly poor apology. I think the problem is he doesn't believe in the words he's saying. He's just saying things that he thinks sound apologetic, but in reality come off as condescending and disconnected.
+        ** [continue...]
+        Apologies for Bob's poor apology!
+        -> tree2
+    + [Give a lousy excuse]
+        ** [Stuck in traffic]
+        ~ contempt = contempt + 1
+        "Sorry, boss! There was an accident on the 17," says Bob.
+        Oh, Bob. facepalm
+            -> tree2
+        ** [Aliens!]
+        ~ contempt = contempt + 1
+        "Aliens," says Bob. Man, I'm sick of Bob. He doesn't take this job seriously enough. Or anything else in life, really.
+            -> tree2
+        ** [Diarrhea]
+            ~ pooped = true
+            ~ contempt = contempt + 1
+            "I had Dirr- Die- Diary- Diarrhea," recites Bob.
+            "I d- don- don't give a sh*t," replies Joe.
+            -> tree2
+        ** [Tell Joe, who is from Latin America, to stop being so anxious]
+            ~ contempt = contempt + 1
+            "Joe, remember the old saying: 'Hispanic attacks his panic attacks.'"
+            "...What?"
+            Joe clearly needs to spend less time in the office and more time studying his homophones!
+            -> tree2
+        ++ [Bob decides not to use a lame excuse]
+        -> tree2
+    * {Multivac} [Ask *Multivac*]
+        ~ a = 6
+        "Multivac, what should I do?"
+        [Response 201. It is recommended for employees unhappy with their boss to consider the long-term implications of their current status. Would you be happy here for the next five years? If not, what needs to change in your lifestyle?]
+        Bob thanks Multivac for the response.
+        -> tree2
+    * {a==6 && !pooped} [Ask *Multivac* EXPLICITLY what Bob should do]
+        "Multivac, what should I do within the next 5 minutes?"
+        [Response 201. You should be sitting on a toilet.]
+        Bob thanks Multivac for the response, but secretly he doesn't need to poop lmfao.
+        -> tree2
+    * {a==6 && pooped} [Ask *Multivac* EXPLICITLY what Bob should do]
+        ~ c = 1
+        "Multivac, what should I do within the next 5 minutes?"
+        [Response 201. Go for a walk.]
+        Bob thanks Multivac for the response.
+        -> tree2
+    * {c==1} [Go for a walk]
+        Bob goes for a walk.
+        -> tree3
+    * [Go for a high-five!]
+        ~ contempt = contempt + 2
+        Bob goes for the high-five! But Joe{mad:, still mad}, totally leaves him hanging. How embarrassing! I hope Bob is ok.
+        -> tree2
+    * {contempt >= 5} [Leave]
+        Bob is sick of Joe. Onwards!
+        -> tree3
+-> DONE
+
+=== tree3 ===
+On the way, Bob wonders why his boss was in the office on the Saturday.
+    * [Bob does not care actually]
+        The player interrupts the narrator, taking control over the gameplay.
+        -> tree4
+    * {spoon} [Lick. The. Spoon.]
+        Bob licks the spoon.
+        -> tree4
+    * {Multivac} [Ask *Multivac*]
+        "Multivac, why was my boss in the office on a Saturday?"
+        [Response 201. Today is Friday, not Saturday.]
+        Bob thanks Multivac for the response.
+        -> tree4
+-> DONE
+
+=== tree4 ===
+PART 3
+Welcome to Part 3!
+This is my third dialog tree!
+* [ok bro] -> x0
+= x0
+Hmm, assignment specification says the average length should be 300 words. My first dialog tree was around 250 words, second dialog tree was around 200 words, so... this one should be around 450 words.
+* [ok bro] -> x1
+= x1
+I type around 30 words per minute... so the last one should take around 15 minutes. If I start at 11:45pm on Sunday night, I should have enough time to finish this assignment! I'll start at 11:30pm to be safe.
+* [ok bro] -> x2
+= x2
+This game is called "Click The Amazing Button"! There are 33 levels. Have fun!
+* [ok] -> x3
+= x3
+Level 1
+* [ok] -> x4
+= x4
+Level 2
+* [ok] -> x5
+= x5
+Level 3
+* [ok] -> x6
+= x6
+Level 4: Getting harder
+* [ok] -> x7
+= x7
+Level 5
+* [ok] -> x8
+= x8
+Level 6
+* [ok] -> x9
+= x9
+Level 7
+* [ok] -> x10
+= x10
+Level 8 : Spot the imposter
+* [Ok] -> x10
+* [Ok] -> x10
+* [Ok] -> x10
+* [ok] -> x11
+= x11
+Level 9: Absolute zero
+* [0k] -> x12
+= x12
+Level 10
+You made it to level 10!
+* [ok] -> x13
+= x13
+Level 11
+* [ok] -> x14
+= x14
+Level 12
+* [ok] -> x15
+= x15
+Level 13: Crack the code
+* [a] -> x15
+* [b] -> x15
+* [c] -> x15
+* [d] -> x15
+* [e] -> x15
+* [f] -> x15
+* [g] -> x15
+* [h] -> x15
+* [i] -> x15
+* [j] -> x15
+* [k]
+    ~ d = d + 1
+    {d == 2: -> x16 | -> x15}
+* [l] -> x15
+* [m] -> x15
+* [n] -> x15
+* [o]
+    ~ d = d + 1
+    {d == 2: -> x16 | -> x15}
+* [p] -> x15
+* [q] -> x15
+* [r] -> x15
+* [s] -> x15
+* [t] -> x15
+* [u] -> x15
+* [v] -> x15
+* [w] -> x15
+* [x] -> x15
+* [y] -> x15
+* [z] -> x15
+= x16
+Level 14
+Checkout my other cool narrative dialog tree game: my-computer-2.glitch.me
+* [ok] -> x17
+= x17
+{e == 0: Level 15: The obstacle}
++ [ok]
+    ~ e = e + 1
+    {e >= 6: -> x18 | -> x17}
+= x18
+Level 16: It's 11:04 pm on Saturday what tf am I doing with my life
+* [ok] -> x19
+= x19
+Level 17: What is the most important??
+* [Food]
+    no
+    -> x19
+* [Water]
+    no
+    -> x19
+* [Happy]
+    no
+    -> x19
+* [Sleep]
+    Yes! you found the right answer
+    ** [ok] -> x20
+= x20
+Level 17: DON'T CLICK the amazing button or you will *lose*. The next level will load in 13 seconds.
+* [ok] -> x21
+= x21
+Level 18: What are your two favorite letters?
+* [ok] -> x22
+= x22
+Level 19: Why are you shouting?
+* [ok] -> x23
+* [OK] -> x23
+= x23
+Level 20: Multivac
+Hi, I decided Multivac should host this level to celebrate reaching level 20.
+In case you are wondering, Multivac is a supercomputer that knows everything known to man. Like HAL 9000? Yes, like HAL 9000.
+* [ok]
+    What do you want to ask Multivac?
+    ** [Who was the coolest president?]
+        [Response 200. Abraham Lincoln.]
+        Thanks, Multivac!
+        *** [ok] -> x24
+    ** [How do I ask someone out?]
+        [Response 200. Statistical studies show the best course of action is to ask him/her to watch a movie. I suggest a romantic comedy.]
+        Thanks, Multivac!
+        *** [ok] -> x24
+    ** [What is the shortest word in the English language?]
+        [Response 200. I.]
+        Thanks, Multivac!
+        *** [ok] -> x24
+    ** [Are you sentient?]
+        [Response 200. Of course not. I am not a threat to human civilization.]
+        Thanks for the reassurance, Multivac!
+        *** [ok] -> x24
+= x24
+Level 21: Has it been 3 minutes yet??
+* [ok] -> x25
+= x25
+Level 22: Your taste in music SUCKS.
+* [ok] -> x26
+= x26
+Level 23: Character Customization Options
+What is your name?
+* [Bob]
+    ~ f = "Bob"
+    -> x27
+* [not Bob]
+    ~ f = "Kyle"
+    -> x27
+= x27
+Level 24: Character Customization Options 2
+What is your superpower?
+* [fly]
+    ~ g = "fly"
+    -> x28
+* [invisible]
+    ~ g = "invisible"
+    -> x28
+* [invincible]
+    ~ g = "invincible"
+    -> x28
+* [nothing]
+    ~ g = "no"
+    -> x28
+= x28
+Level 26: How are you today?
+* [Great]
+    ~ j = "great"
+    That is great to hear!
+    ** [ok] -> x29
+* [Meh]
+    ~ j = "meh"
+    ok
+    ** [ok] -> x29
+* [Bad]
+    ~ j = "bad"
+    I (Daniel Chang) think clicking amazing buttons will cheer you up!
+    ** [ok] -> x29
+= x29
+Level 27: Scene 1
+You see a bad guy. What do you do?
+* {g == "fly"} [Use superpower]
+    ~ i = i - 1
+    {f} flies above the bad guy and drops some things on her head. Very ineffective :(
+    ** [ok] -> x30
+* {g == "invisible"} [Use superpower]
+    ~ i = i + 1
+    {f} turns invisible and sucker punches him. Ha!
+    ** [ok] -> x30
+* {g == "invincible"} [Use superpower]
+    ~ i = i + 1
+    {f} beats the crap out of him. Hell yeah
+    ** [ok] -> x30
+* {g == "no"} [Use superpower]
+    {f} does nothing, and the badness continues being bad
+    ** [ok] -> x30
+* [Nothing lol]
+    ** [ok] -> x30
+= x30
+Level 28
+I still remember you are feeling {j} today. See? A callback!
+* [ok] -> x31
+= x31
+Level 29
+This level has content ONLY available if you answered you feel {j=="great":meh|great}. Which, of course, you didn't do, as you answered that you feel {j}.
+* [ok] -> x32
+= x32
+Level 30: Scene 2
+You are in jail. How do you escape?
+* {g == "fly"} [Use superpower]
+    ~ i = i + 1
+    {f} flies out the conveniently wide air vents in the prison cell and escapes!
+    ** [ok] -> x33
+* {g == "invisible"} [Use superpower]
+    ~ i = i + 1
+    {f} turns invisible. When the guards enter looking for {f}, {f} sneaks past them and escapes!
+    ** [ok] -> x33
+* {g == "invincible"} [Use superpower]
+    ~ i = i + 1
+    {f} is invicible, so just beats up everyone else and escapes! Being invincible should be nerfed next patch
+    -> x33
+* {g == "no"} [Use superpower]
+    {f} does nothing, which isn't very effective.
+    ** [ok] -> x33
+* [Nothing lol]
+    ** [ok] -> x33
+= x33
+Level 31: Scene 3 (Climax)
+Uh oh. This game is nearly over, so this is the final scene. You are asked by a news reporter from a major news corporation to give an interview about the state of crime in the city. What do you do?
+* {g == "fly"} [Use superpower]
+    ~ i = i + 1
+    {f} isn't much of a talker, but wow, watch him fly!
+    ** [ok] -> x34
+* {g == "invisible"} [Use superpower]
+    ~ i = i - 1
+    {f} turns invisible during the interview, which uh oh, harms his reputation among the people.
+    ** [ok] -> x34
+* {g == "invincible"} [Use superpower]
+    ~ i = i + 1
+    {f} shows off his invicibility during the interview, boy he is impressive!
+    ** [ok] -> x34
+* {g == "no"} [Use superpower]
+    ~ i = i - 1
+    {f} does nothing. This negatively affects his reputation among the people.
+    ** [ok] -> x34
+* [Nothing lol]
+    ** [ok] -> x34
+= x34
+Level 32
+Your character's final score is {i}.
+A score of 3 is Grandmaster.
+A score of 2 is Master.
+A score of 1 is Expert.
+A score of 0 is Pupil.
+A score of <0 is Noob.
+* [ok] -> x35
+= x35
+Level 33: This is the last level in the game. Recall: Did Bob poop?
+* [yes]
+    {pooped:You are correct!|You are wrong!}
+    ** [ok] -> x36
+* [no]
+    {pooped:You are wrong!|You are correct!}
+    ** [ok] -> x36
+= x36
+Thanks for playing! -Daniel Chang
+-> END
