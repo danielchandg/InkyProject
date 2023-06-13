@@ -8,6 +8,8 @@ VAR k = false
 VAR Multivac = false
 VAR mad = false
 VAR pooped = false
+VAR happy = false
+VAR roses = false
 VAR c = 0
 VAR contempt = 0
 VAR d = 0
@@ -42,6 +44,7 @@ So I kind of ran out of time to do this project, but I hope you enjoy it nonethe
         He sees something so beautiful, so otherwordly, that he can't find the words to describe it. In fact, I think it would take more than 300 words to describe it.
         -> tree1
     * [Touch his toes]
+        ~ happy = true
         ~ adjective = "flexible"
         My, you are flexible Bob!
         -> tree1
@@ -168,6 +171,16 @@ On the way, Bob wonders why his boss was in the office on the Saturday.
         [Response 201. Today is Friday, not Saturday.]
         Bob thanks Multivac for the response.
         -> tree4
+    * {rewatches_matrix} [The Matrix is a great movie]
+        "Indeed. The Matrix is a great movie." Bob forgets about his boss.
+        -> tree4
+    * {adjective == "flexible"} [Touch my toes]
+        My, Bob is flexible.
+        -> tree4
+    * [Smell the roses]
+        ~ roses = true
+        It's important to slow down and smell the roses sometimes.
+        -> tree3
 -> DONE
 
 === tree4 ===
@@ -282,6 +295,9 @@ Level 17: What is the most important??
 * [Sleep]
     Yes! you found the right answer
     ** [ok] -> x20
+* {b==5} [Air]
+    Still no.
+    -> x19
 = x20
 Level 17: DON'T CLICK the amazing button or you will *lose*. The next level will load in 13 seconds.
 * [ok] -> x21
@@ -316,6 +332,7 @@ In case you are wondering, Multivac is a supercomputer that knows everything kno
         *** [ok] -> x24
 = x24
 Level 21: Has it been 3 minutes yet??
+* {roses} [Smell the roses] -> x25
 * [ok] -> x25
 = x25
 Level 22: Your taste in music SUCKS.
@@ -358,6 +375,10 @@ Level 26: How are you today?
     ~ j = "bad"
     I (Daniel Chang) think clicking amazing buttons will cheer you up!
     ** [ok] -> x29
+* {contempt >= 6} [Awful!]
+    ~ j = "bad"
+    Sorry to hear that!
+    ** [ok] -> x29
 = x29
 Level 27: Scene 1
 You see a bad guy. What do you do?
@@ -377,6 +398,9 @@ You see a bad guy. What do you do?
     {f} does nothing, and the badness continues being bad
     ** [ok] -> x30
 * [Nothing lol]
+    ** [ok] -> x30
+* {c==1} [Go for a walk]
+    That's gotta sting. Walk it off.
     ** [ok] -> x30
 = x30
 Level 28
@@ -426,6 +450,9 @@ Uh oh. This game is nearly over, so this is the final scene. You are asked by a 
     {f} does nothing. This negatively affects his reputation among the people.
     ** [ok] -> x34
 * [Nothing lol]
+    ** [ok] -> x34
+* {rewatches_matrix} [Watch the Matrix]
+    Still holds up, 24 years later.
     ** [ok] -> x34
 = x34
 Level 32
